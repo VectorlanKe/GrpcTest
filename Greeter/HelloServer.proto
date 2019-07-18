@@ -15,13 +15,17 @@
 syntax = "proto3";
 
 //程序集名称
-package Greeter;
+package GrpcServer;
 
 // The greeting service definition.
-service Greeter {
+service HelloServer {
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SayHello(HelloRequest) returns(HelloReply) {}
+  rpc SayHelloOneStremOne(HelloRequest) returns(stream HelloReply) {}
+  rpc SayHelloOneStremTwo(stream HelloRequest) returns(HelloReply) {}
+  rpc SayHelloTwoStrem(stream HelloRequest) returns (stream HelloReply) {}
 }
+
 
 // The request message containing the user's name.
 message HelloRequest {
