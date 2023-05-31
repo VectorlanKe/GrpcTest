@@ -1,0 +1,5 @@
+<Project>
+  <PropertyGroup>
+    <GrpcCsharpVersion>2.53.0</GrpcCsharpVersion>
+  </PropertyGroup>
+</Project>

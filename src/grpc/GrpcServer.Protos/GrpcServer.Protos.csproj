@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <!-- 打包参数 -->
+  <PropertyGroup>
+    <!-- 不包含生成的dll及pdb -->
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <IncludeSymbols>false</IncludeSymbols>
+
+    <PackageId>gRpc.$(AssemblyName)</PackageId>
+    <Version>0.1.2</Version>
+    <PackageTags>gRpc protos</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Description>
+      test pack
+    </Description>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+  <!-- 打包包含的额外文件 PackagePath默认路径安装包时会添加软链接  -->
+  <ItemGroup>
+    <Protobuf Include="./Protos/*.proto" Pack="true" />
+    <None Include="README.md" Pack="true" PackagePath="/" />
+    <!-- Avoid NU5128 warning. TFM in dependencies group of the nuspec must match lib/ref content. -->
+    <None Include="lib\**\*" Pack="true" PackagePath="lib" />
+
+    <None Pack="true" PackagePath="build\" Include="build\**\*.xml; build\**\*.props; build\**\*.targets;" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="$(GrpcCsharpVersion)" PrivateAssets="None" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="./Protos/default.proto">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
