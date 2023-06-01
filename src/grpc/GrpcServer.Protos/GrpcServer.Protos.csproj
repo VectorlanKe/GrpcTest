@@ -11,7 +11,7 @@
     <IncludeSymbols>false</IncludeSymbols>
 
     <PackageId>gRpc.$(AssemblyName)</PackageId>
-    <Version>0.1.2</Version>
+    <Version>0.1.3</Version>
     <PackageTags>gRpc protos</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Description>
@@ -22,7 +22,7 @@
   </PropertyGroup>
   <!-- 打包包含的额外文件 PackagePath默认路径安装包时会添加软链接  -->
   <ItemGroup>
-    <Protobuf Include="./Protos/*.proto" Pack="true" />
+    <None Include="./Protos/*.proto" Pack="true"/>
     <None Include="README.md" Pack="true" PackagePath="/" />
     <!-- Avoid NU5128 warning. TFM in dependencies group of the nuspec must match lib/ref content. -->
     <None Include="lib\**\*" Pack="true" PackagePath="lib" />
@@ -32,10 +32,5 @@
 
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="$(GrpcCsharpVersion)" PrivateAssets="None" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="./Protos/default.proto">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>

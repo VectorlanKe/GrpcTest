@@ -5,10 +5,20 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
+  
   <ItemGroup>
-    <PackageReference Include="gRpc.GrpcServer.Protos" Version="0.1.2" />
+    <PackageReference Include="gRpc.GrpcServer.Protos" Version="0.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Protos\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="C:\Users\Administrator\.nuget\packages\grpc.grpcserver.protos\0.1.3\contentFiles\any\net7.0\Protos\default.proto" GrpcServices="Server" >
+      <Link>Protos/default.proto</Link>
+    </Protobuf>
   </ItemGroup>
 </Project>
